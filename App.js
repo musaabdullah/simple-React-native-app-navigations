@@ -5,8 +5,9 @@ import Home from './Screens/Home';
 import Navigator from './routes/HomeStack';
 export default function App() {
   return (
-    // <Home />
+ 
     <Navigator />
+    
   );
 }
  
