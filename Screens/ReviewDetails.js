@@ -8,8 +8,11 @@ export default function ReviewDetails({ navigation }) {
     }
     return (
         <View style={styles.container}>
-            <Text>ReviewDetails screen</Text>
-            <Button title="Go back" onPress={pressHandler} />
+            <View style={styles.card}>
+           <Text style={{color: "white"}}>Title: { navigation.getParam("title") }</Text>
+           <Text style={{color: "white"}}>Body: { navigation.getParam("body")}</Text>
+           <Text style={{color: "white"}}>Rate: { navigation.getParam("rating")}</Text>
+            </View>
         </View>
     );
 }
@@ -17,5 +20,11 @@ export default function ReviewDetails({ navigation }) {
 const styles = StyleSheet = {
     container: {
         padding: 24
+    },
+    card : {
+        backgroundColor: "gray",
+        padding: 20,
+        borderRadius: 10,
+        
     }
 }
