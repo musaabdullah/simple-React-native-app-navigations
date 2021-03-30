@@ -9,9 +9,8 @@ export default function ReviewDetails({ navigation }) {
     return (
         <View style={styles.container}>
             <View style={styles.card}>
-           <Text style={{color: "white"}}>Title: { navigation.getParam("title") }</Text>
-           <Text style={{color: "white"}}>Body: { navigation.getParam("body")}</Text>
-           <Text style={{color: "white"}}>Rate: { navigation.getParam("rating")}</Text>
+           <Text style={{color: "white", fontSize: 20}}>{ navigation.getParam("title") }</Text>
+           <Text style={{color: "white"}}>{ navigation.getParam("body")}</Text>
             </View>
         </View>
     );
