@@ -1,8 +1,9 @@
 import React,{ useState, useEffect } from 'react';
-import { View, Text , Button, FlatList, TouchableOpacity, SefeArea, Image, ImageBackground} from 'react-native';
+import { View, Text , Button, FlatList, TouchableOpacity, SefeArea, Image, ImageBackground, ActivityIndicator} from 'react-native';
 import axios from 'axios';
 import { ScrollView } from 'react-native-gesture-handler';
-
+import IMG1 from '../assets/IMG1.png'
+import IMG2 from '../assets/IMG2.png'
 export default function Login({navigation}) {
 
       const languages = [{key:1, title:"Javascript"}
@@ -10,13 +11,15 @@ export default function Login({navigation}) {
       {key: 4, title:"Java"},{key:5, title: "PHP"},{key: 6, title:"Python"}]
    
       const [list, setList] = useState([]);
-
+      const [isLeading, setIsLoading] = useState(false);
       useEffect(() => {
           const fetchData = async () => {
+              setIsLoading(true);
               const { data } = await axios.get("https://reqres.in/api/users?page=2");
               const res = await data.data;
               console.log(res);
               setList(res);
+              setIsLoading(false);
           }
           fetchData();
       }, [])
@@ -36,6 +39,7 @@ export default function Login({navigation}) {
                   />
             </View>
                 <Text style={{marginTop: 30, fontSize: 20, fontWeight: "bold"}}>Top developers:</Text>
+           { isLeading ? <ActivityIndicator/> : (
             <View style={{marginTop:10}}>
                 <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
             {
@@ -51,7 +55,12 @@ export default function Login({navigation}) {
             }
             </ScrollView>
             </View>
+           )}
             <Text style={{marginTop: 30, fontSize: 20, fontWeight: "bold"}}>Top application:</Text>
+          <View style={{display: "flex", flexDirection: "row", marginTop: 20}}>
+           <Image source={{uri:IMG1}} style={{width: 160, height: 160, marginRight:5, borderRadius:10}}/>
+           <Image source={{uri:IMG2}} style={{width: 160, height: 160, borderRadius:10}}/>
+          </View>
         </View>
     );
 }

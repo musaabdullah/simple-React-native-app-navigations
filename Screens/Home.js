@@ -3,6 +3,7 @@ import { View, Text , Button, FlatList, TouchableOpacity, SefeArea} from 'react-
 import axios from 'axios';
 import { ScrollView } from 'react-native-gesture-handler';
 
+
 export default function Home({navigation}) {
 
     const [show, setShow] = useState(13);
@@ -42,6 +43,7 @@ export default function Home({navigation}) {
             }
             </ScrollView> */}
         </View>
+        
     );
 }
  
